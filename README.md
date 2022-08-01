@@ -27,3 +27,6 @@
   - 지급금 요청,승인 시, 상세내역(주문상세, 보상금액 내역) 조회 가능
 
 참고 : https://techblog.woowahan.com/8357/
+
+## TODOS
+securitycontext를 활용한 user authority 확인
