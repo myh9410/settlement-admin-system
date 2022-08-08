@@ -7,6 +7,8 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static javax.persistence.FetchType.*;
+
 @Getter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -24,5 +26,9 @@ public class Orders {
     //todo : 아이템
     @OneToMany(mappedBy = "order")
     private List<Items> itemsList;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name="owner_id")
+    private StoreOwners storeOwners;
 
 }
