@@ -16,6 +16,8 @@ public class StoreOwners {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     @OneToMany(mappedBy = "order")
     private List<Orders> ordersList;
 
