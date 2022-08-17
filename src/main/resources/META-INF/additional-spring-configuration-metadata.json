@@ -1,0 +1,18 @@
+{
+  "properties": [
+    {
+      "name": "settlement.datasource.admin.hostname",
+      "type": "java.lang.String",
+      "description": "local db hostname"
+    },
+    {
+      "name": "settlement.datasource.admin.username",
+      "type": "java.lang.String",
+      "description": "local db username"
+    },
+    {
+      "name": "settlement.datasource.admin.password",
+      "type": "java.lang.String",
+      "description": "local db password"
+    }
+  ] }

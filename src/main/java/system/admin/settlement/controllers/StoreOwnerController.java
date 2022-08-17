@@ -1,9 +1,8 @@
 package system.admin.settlement.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import system.admin.settlement.dtos.storeowners.StoreOwnerRequest;
 import system.admin.settlement.dtos.storeowners.StoreOwnerResponse;
 import system.admin.settlement.services.StoreOwnerService;
 
@@ -17,6 +16,13 @@ public class StoreOwnerController {
     public StoreOwnerResponse getStoreOwner(@PathVariable Long ownerId) {
 
         return storeOwnerService.findOwnerById(ownerId);
+
+    }
+
+    @PostMapping("/store-owner")
+    public StoreOwnerResponse saveStoreOwner(@RequestBody StoreOwnerRequest storeOwnerRequest) {
+
+        return storeOwnerService.createStoreOwner(storeOwnerRequest);
 
     }
 
