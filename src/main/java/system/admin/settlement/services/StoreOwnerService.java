@@ -10,6 +10,8 @@ import system.admin.settlement.entities.StoreOwners;
 import system.admin.settlement.factories.StoreOwnersFactory;
 import system.admin.settlement.repositories.storeowners.StoreOwnerRepository;
 
+import java.util.Optional;
+
 import static org.springframework.transaction.annotation.Propagation.*;
 
 @Service
@@ -42,6 +44,13 @@ public class StoreOwnerService {
         return StoreOwnerResponse.builder()
                 .storeOwners(storeOwners)
                 .build();
+
+    }
+
+    @Transactional
+    public void deleteStoreOwner(Long ownerId) {
+
+        storeOwnerRepository.deleteStoreOwner(ownerId);
 
     }
 }
