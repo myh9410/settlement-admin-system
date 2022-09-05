@@ -26,4 +26,9 @@ public class StoreOwnerController {
 
     }
 
+    @DeleteMapping("/store-owner/{ownerId}")
+    public void deleteStoreOwner(@PathVariable Long ownerId) {
+        storeOwnerService.deleteStoreOwner(ownerId);
+    }
+
 }
