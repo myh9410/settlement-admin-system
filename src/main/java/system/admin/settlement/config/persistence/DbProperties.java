@@ -37,11 +37,11 @@ public class DbProperties {
                 .append("jdbc:mysql://")
                 .append(hostname)
                 .append(":").append(port)
-                .append("/").append(dbname);
-//                .append("?")
-//                .append("serverTimezone=").append(zoneId)
-//                .append("&characterEncoding=").append(characterEncoding)
-//                .append("&zeroDateTimeBehavior=").append(zeroDateTimeBehavior);
+                .append("/").append(dbname)
+                .append("?")
+                .append("serverTimezone=").append(zoneId)
+                .append("&characterEncoding=").append(characterEncoding)
+                .append("&zeroDateTimeBehavior=").append(zeroDateTimeBehavior);
 
         return connectionStringBuilder.toString();
     }
