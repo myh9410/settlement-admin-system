@@ -28,9 +28,9 @@ public class Orders {
     private List<Items> itemsList;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name="owner_id")
+    @JoinColumn(name="storeOwner_id")
     private StoreOwners storeOwners;
 
-    private List<OrderSpec> orderSpecList;
+//    private List<OrderSpec> orderSpecList;
 
 }

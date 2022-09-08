@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class StoreOwners {
     @NotNull
     private String name;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "storeOwners", cascade = CascadeType.ALL)
     private List<Orders> ordersList;
 
 }
