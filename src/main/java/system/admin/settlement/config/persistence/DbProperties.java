@@ -19,7 +19,7 @@ public class DbProperties {
 
     private final String dbname = "settlement";
     private final int port = 3306;
-    private final String zoneId = "Asiaa/Seoul";
+    private final String zoneId = "Asia/Seoul";
     private final String characterEncoding = "UTF-8";
     private final String zeroDateTimeBehavior = "convertToNull";
     private JpaProperties jpaProperties;
