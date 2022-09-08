@@ -2,9 +2,9 @@ package system.admin.settlement.exceptions;
 
 import org.springframework.http.HttpMethod;
 
-public class SaveErrorException extends RuntimeException {
+public class CUDException extends RuntimeException {
 
-    public SaveErrorException(HttpMethod method, Throwable cause) {
+    public CUDException(HttpMethod method, Throwable cause) {
         super(cause);
         this.getMessage(method);
     }
