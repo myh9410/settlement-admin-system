@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import system.admin.settlement.dtos.storeowners.StoreOwnerRequest;
 import system.admin.settlement.dtos.storeowners.StoreOwnerResponse;
 import system.admin.settlement.exceptions.FindErrorException;
-import system.admin.settlement.exceptions.SaveErrorException;
+import system.admin.settlement.exceptions.CUDException;
 import system.admin.settlement.services.StoreOwnerService;
 
 import javax.validation.Valid;
+import java.util.Map;
 import java.util.Objects;
 
 @RestController
@@ -43,14 +44,20 @@ public class StoreOwnerController {
 
             return new ResponseEntity<>(storeOwnerResponse, HttpStatus.ACCEPTED);
         } catch (Exception ex) {
-            throw new SaveErrorException(HttpMethod.POST, ex);
+            throw new CUDException(HttpMethod.POST, ex);
         }
 
     }
 
     @DeleteMapping("/store-owner/{ownerId}")
-    public void deleteStoreOwner(@PathVariable Long ownerId) {
-        storeOwnerService.deleteStoreOwner(ownerId);
+    public ResponseEntity<?> deleteStoreOwner(@PathVariable Long ownerId) {
+        try {
+            storeOwnerService.deleteStoreOwner(ownerId);
+
+            return new ResponseEntity<>(Map.of("result", "SUCCESS"), null, HttpStatus.ACCEPTED);
+        } catch (Exception ex) {
+            throw new CUDException(HttpMethod.DELETE, ex);
+        }
     }
 
 }
