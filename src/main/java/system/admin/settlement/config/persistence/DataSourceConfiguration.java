@@ -48,8 +48,7 @@ public class DataSourceConfiguration {
             JpaProperties jpaProperties
     ) throws InvalidPropertiesFormatException {
 
-        dbProperties = getDbProperties(dbProperties, jpaProperties);
-
+        getDbProperties(dbProperties, jpaProperties);
 
         return DataSourceBuilder
                 .create()
