@@ -14,6 +14,7 @@ import static javax.persistence.FetchType.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
+@Table(name = "orders")
 public class Orders {
 
     @Id
@@ -21,6 +22,7 @@ public class Orders {
     private Long id;
 
     @CreatedDate
+    @Column(name = "created_date")
     private LocalDateTime createdDate;
 
     //todo : 아이템
@@ -31,6 +33,7 @@ public class Orders {
     @JoinColumn(name="storeOwner_id")
     private StoreOwners storeOwners;
 
-//    private List<OrderSpec> orderSpecList;
+    @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
+    private List<OrderSpec> orderSpecList;
 
 }
