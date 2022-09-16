@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import system.admin.settlement.entities.Orders;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static system.admin.settlement.entities.QOrders.orders;
@@ -19,6 +20,13 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository {
     public List<Orders> findOrdersByStoreOwnerId(Long storeOwnerId) {
         return jpaQueryFactory.selectFrom(orders)
                 .where(orders.storeOwners.id.eq(storeOwnerId))
+                .fetch();
+    }
+
+    @Override
+    public List<Orders> findOrdersByRegDate(LocalDateTime regDateTime) {
+        return jpaQueryFactory.selectFrom(orders)
+                .where(orders.createdDate.after(regDateTime))
                 .fetch();
     }
 }

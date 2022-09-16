@@ -6,6 +6,7 @@ import system.admin.settlement.dtos.orders.OrderResponse;
 import system.admin.settlement.entities.Orders;
 import system.admin.settlement.repositories.orders.OrderRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,10 +25,27 @@ public class OrderService {
         }
 
         return Optional.of(
-            ordersList.stream()
+                ordersList.stream()
                 .map(orders ->
-                OrderResponse.builderByOrders().orders(orders).build()
-            ).collect(Collectors.toList())
+                        OrderResponse.builderByOrders().orders(orders).build())
+                .collect(Collectors.toList())
+        );
+
+    }
+
+    public Optional<List<OrderResponse>> getOrdersByRegDate(LocalDateTime regDateTime) {
+
+        List<Orders> ordersList = orderRepository.findOrdersByRegDate(regDateTime);
+
+        if (ordersList.isEmpty()) {
+            return Optional.empty();
+        }
+
+        return Optional.of(
+                ordersList.stream()
+                .map(orders ->
+                        OrderResponse.builderByOrders().orders(orders).build())
+                .collect(Collectors.toList())
         );
 
     }
