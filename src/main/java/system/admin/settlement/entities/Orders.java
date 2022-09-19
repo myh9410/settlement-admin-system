@@ -34,6 +34,7 @@ public class Orders {
     private StoreOwners storeOwners;
 
     @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<OrderSpec> orderSpecList;
 
 }

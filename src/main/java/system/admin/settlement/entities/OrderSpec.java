@@ -12,6 +12,7 @@ import static javax.persistence.FetchType.LAZY;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Entity
+@Table(name = "orders_spec")
 public class OrderSpec {
 
     @Id
@@ -20,6 +21,7 @@ public class OrderSpec {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name="orders_id")
+    @ToString.Exclude
     private Orders orders;
 
     private OrderType orderType;
