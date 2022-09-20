@@ -24,8 +24,11 @@ public class OrderSpec {
     @ToString.Exclude
     private Orders orders;
 
+    @Column(name = "order_type")
+    @Enumerated(EnumType.STRING)
     private OrderType orderType;
 
+    @Column(name = "price")
     private Long price;
 
 }

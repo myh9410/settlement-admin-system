@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static system.admin.settlement.entities.QOrders.orders;
+import static system.admin.settlement.entities.QOrderSpec.orderSpec;
 
 @Repository
 @RequiredArgsConstructor
@@ -19,6 +20,9 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository {
     @Override
     public List<Orders> findOrdersByStoreOwnerId(Long storeOwnerId) {
         return jpaQueryFactory.selectFrom(orders)
+                .distinct()
+                .leftJoin(orders.orderSpecList, orderSpec)
+                .fetchJoin()
                 .where(orders.storeOwners.id.eq(storeOwnerId))
                 .fetch();
     }

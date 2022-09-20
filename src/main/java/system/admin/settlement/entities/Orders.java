@@ -26,15 +26,15 @@ public class Orders {
     private LocalDateTime createdDate;
 
     //todo : 아이템
-    @OneToMany(mappedBy = "order")
-    private List<Items> itemsList;
+//    @OneToMany(mappedBy = "order")
+//    private List<Items> itemsList;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name="storeOwner_id")
+    @ToString.Exclude
     private StoreOwners storeOwners;
 
     @OneToMany(mappedBy = "orders", cascade = CascadeType.ALL)
-    @ToString.Exclude
     private List<OrderSpec> orderSpecList;
 
 }
